@@ -14,10 +14,10 @@ $msgs = getmessages($file, 25);
 <body onload="document.yo.yo.focus();" style="font-size: 12px; font-family: helvetica, sans-serif;">
 <ul>
 <?php if (count($msgs)) { foreach ($msgs as $msg) { ?>
-<?php $pieces = str_split($msg, $split_length = 11); ?>
+<?php $pieces = left($msg, 11); ?>
 <li>
-<span style="color: rgb(<?php print($pieces[0]); ?>);">Yo: </span>
-<?php print(htmlspecialchars( substr($pieces[1],4)   )) ?>
+<span style="color: rgb(<?php print($pieces); ?>);">Yo: </span>
+<?php print(htmlspecialchars( substr($msg,15)   )) ?>
 </li>
 <?php }} ?>
 </ul>
@@ -45,7 +45,7 @@ function to_file($file, $content){ file_put_contents($file,$content,FILE_APPEND|
 function left($str, $length)	 { return substr($str, 0, $length);	}
 function right($str, $length)    { return substr($str, -$length);   }
 function sendmessage($file, $msg) {
-	$text = preg_replace("/[^a-zA-Z0-9]+/", "", $msg);
+	$text = preg_replace("/[^a-zA-Z0-9\s]+/", "", $msg);
 	$text = str_replace(array("\n", "\r\n"), "", $text);
 	$rgb = rgbfromip();
 	to_file($file, $rgb . " __ " . left($text, 140) . "\n"); # max length
