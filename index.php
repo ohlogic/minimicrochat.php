@@ -66,10 +66,18 @@ function clean($text){
 	$allow1 = str_split("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0987654321");
 	$allow2 = array(' ',',','.','/',';',"'",'[',']','\\','=','-','+','_',')','(','*','&',
 			'^','%','$','#','@','!','~','`','<','>','?', ':', '"', '{', '}', '|');
-	$allow3 = implode(array_merge($allow1, $allow2));
-	$chars = str_split($text);
-	$str = "";
-	foreach($chars as $char){ if (contains($char, $allow3)) $str = $str . $char; }
-	return  $str;
+	$allow3 = array_merge($allow1, $allow2);
+	return str_accept($allow3, "", $text);		// opposite to   str_replace() function
 }
 function contains ($needle, $haystack) { return strpos($haystack, $needle) !== false; }
+function str_accept($arr, $what, $contents) {		// opposite to   str_replace() function
+	$chars = str_split($contents);
+	$str = "";
+	foreach($chars as $char) { 
+		if (contains($char, implode($arr) ))
+			{ $str = $str . $char; }
+		else
+			{ $str = $str . $what; } 
+	}
+return  $str;
+}
