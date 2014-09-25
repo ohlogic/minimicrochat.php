@@ -14,9 +14,8 @@ $msgs = getmessages($file, 25);
 <body onload="document.yo.yo.focus();" style="font-size: 12px; font-family: helvetica, sans-serif;">
 <ul>
 <?php if (count($msgs)) { foreach ($msgs as $msg) { ?>
-<?php $pieces = left($msg, 11); ?>
 <li>
-<span style="color: rgb(<?php print($pieces); ?>);">Yo: </span>
+<span style="color: rgb(<?php print(left($msg, 11)); ?>);">Yo: </span>
 <?php print(htmlspecialchars( substr($msg,15) )) ?>
 </li>
 <?php }} ?>
