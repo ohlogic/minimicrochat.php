@@ -6,7 +6,7 @@ $display_size = false;		// display file size for fun, no reason, change to true
 $limit_size = 1048576 * 5;	// 5 MB file, prevent file getting too big, preference to size
 $file = 'yo_txt.txt';
 check_file($file);
-if ($_POST['yo']) { sendmessage($file,$_POST['yo']); }
+if (isset($_POST['yo'])) { sendmessage($file,$_POST['yo']); }
 $msgs = getmessages($file, 25);
 ?><!doctype html>
 <html lang="en">
