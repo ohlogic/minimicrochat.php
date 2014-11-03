@@ -16,7 +16,7 @@ $msgs = getmessages($file, 25);
 <?php if (count($msgs)) { foreach ($msgs as $msg) { ?>
 <li>
 <span style="color: rgb(<?php print(left($msg, 11)); ?>);">Yo: </span>
-<?php print(htmlspecialchars( substr($msg,15) )) ?>
+<?php print(htmlspecialchars( substr($msg,14) )) ?>
 </li>
 <?php }} ?>
 </ul>
