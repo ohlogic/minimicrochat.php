@@ -34,8 +34,8 @@ $size = filesize($f);
 if ($display_size) {	// optional fun, display file size for no reason
 	if (($size) < 1024) $text = $size .'byes'.'<br>';
 	if (($size) >= 1024) $text = $size .'byes'.' that is '.number_format($size / 1024, 2).' KB'.'<br>';
-	if (($size) >= 1048576) $text = $size .'byes'.' that is '.number_format($bytes / 1048576, 2) . ' MB'.'<br>';
-	if (($size) >= 1073741824) $text = $size .'byes'.' that is '.number_format($bytes / 1073741824, 2) . ' GB'.'<br>';
+	if (($size) >= 1048576) $text = $size .'byes'.' that is '.number_format($size / 1048576, 2) . ' MB'.'<br>';
+	if (($size) >= 1073741824) $text = $size .'byes'.' that is '.number_format($size / 1073741824, 2) . ' GB'.'<br>';
 	echo $text; }
 // prevent file getting to big...
 if ($size >= $limit_size) die('file size exceed, please attend to');	//or just reset file with file_put_contents($f, ''); //either way, fail-safe
